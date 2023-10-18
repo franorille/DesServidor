@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formularios GET y POST</title>
+</head>
+<body>
+    <h1>Formulario GET</h1>
+    <form action="procesoForm.php" method="get">
+        <label for="nombre">Nombre:</label>
+        <input type="text" name="nombre" id="nombre">
+        <label for="apellido">Apellido:</label>
+        <input type="text" name="apellido" id="apellido">
+        <label for="edad">Edad:</label>
+        <input type="number" name="edad" id="edad">
+        <button type="submit">Envia</button>
+    </form>
+
+    <h1>Formulario POST</h1>
+    <form action="procesoForm.php" method="post">
+        <label for="usuario">Usuario:</label>
+        <input type="text" name="usuario" id="usuario">
+        <label for="contraseña">Contraseña:</label>
+        <input type="text" name="contraseña" id="contraseña">
+      
+        <button type="submit">Envia</button>
+    </form>
+    
+</body>
+</html>

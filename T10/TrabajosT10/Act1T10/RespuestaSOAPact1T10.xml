@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope"
+    xmlns:ns1="http://localhost/DesWebServ/T10/TeoriaT10/CasoPractico1.php"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    
+<env:Header/>
+<env:Body>
+    <ns1:getPrevisionRespuesta>
+        <return xsi:type="xsd:float">0.35</return>
+    </ns1:getPrevisionRespuesta>
+</env:Body>
+</env:Envelope>

@@ -1,0 +1,57 @@
+<!-- Aplicacion web que usa AJAX y HTML -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caso práctico 1 AJAX con HTML</title>
+    <script>
+
+        var peticion_http;
+        var READY_STATE_UNINITIALIZED = 0;
+        var READY_STATE_OPENED = 1;
+        var READY_STATE_HEADERS_RECEIVED = 2;
+        var READY_STATE_LOADING = 3;
+        var READY_STATE_COMPLETE = 4;
+
+        function inicializaXMLHttpRequest() {
+            if (window.XMLHttpRequest) {
+                return new XMLHttpRequest();
+            }
+
+        }
+
+        function peticion(metodo, url, funcion) {
+
+            peticion_http = inicializaXMLHttpRequest();
+
+            if (peticion_http) {
+                peticion_http.onreadystatechange = funcion;
+                peticion_http.open(metodo, url, true)
+                peticion_http.send(null);
+            }
+
+        }
+
+        function respuesta() {
+            if (peticion_http.readyState == READY_STATE_COMPLETE) {
+                if (peticion_http.status == 200) {
+                    alert(peticion_http.responseText);
+                }
+            }
+        }
+
+        function acceso() {
+            peticion("POST", "http://localhost/DesWebServ/T8/TeoriaT8/AJAX/holamundo.txt", respuesta);
+        }
+
+        window.onload = acceso;
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

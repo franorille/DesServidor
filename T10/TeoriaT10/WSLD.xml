@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>  <!-- Codificacion en xml declaración xml -->
+ <!-- Descripcion del servicio web para que los clientes puedan conocerlo y saber como hacer las llamadas al servicio -->
+<definitions targetNamespace="http://jaxwsHelloServer/" name="HelloService">  <!-- name usamos el mismo nombre en el que se utiliza en la etiqueta service al final -->
+    <!-- definicion de los tipos referenciados -->
+    <types>
+        <xsd:schema>
+            <xsd:import namespace="http://jaxwsHelloServer/"
+                schemaLocation="http://localhost:8080/JAXWSHelloAppServer/jaxwsHellos?xsd=1" />  <!-- esquema en donde se encuentran todos los tipos -->
+
+        </xsd:schema>
+    </types>
+    
+    <message name="sayHello">
+        <part name="parameters" element="tns:sayHello"/>
+    </message>
+    <message name="sayHelloResponse">
+        <part name="parameters" element="tns:sayHelloResponse"/>
+    </message>
+
+ <!-- define las operaciones, en este caso una operacion sayHello-->
+    <portType name="Hello">   <!-- nombre asociado al portType-->
+        <operation name="sayHello">   <!-- -->
+            <input message="tns:sayHello" wsam:Action="http://jaxwsHelloServer/Hello/sayHelloRequest" />  <!-- definimos el mensaje tns:sayHello que hace referencia a la etiqueta message definida arriba -->
+            <output message="tns:sayHelloResponse" wsam:Action="http://jaxwsHelloServer/Hello/sayHelloResponse" />
+        </operation>
+    </portType>
+ <!-- binging con el nombre helloPortBingin que se le asocia, que luego será referenciado en la etiqueta port dentro de service-->
+    <binding name="HelloPortBinding" type="tns:Hello"> 
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http"   
+            style="document" />  <!-- transport: indica el protocolo de comunicacion style: marca el estilo, puede ser rpc o document -->
+        <operation name="sayHello">  <!-- se hace referencia a la operacion definida en protType operation-->
+            <soap:operation soapAction="" />
+            <input>  <!-- referencia los mensajes de entrada-->
+                <soap:body use="literal" />
+            </input>
+            <output>  <!-- referencia los mensajes de salida -->
+                <soap:body use="literal" />   <!-- indica como deben ser codificados los mensajes, en este caso literal  -->
+            </output>
+        </operation>
+    </binding>
+
+     <!-- Se define un servicio con el nombre de HelloService
+    Este serv estará formado por un port llamado Hello, que se va a aceeder con el protocolo HTTP -->
+    <service name="HelloService">
+        <port name="HelloPort" bindign="tns:HelloPortBinding">  <!-- binding hace referencia al HelloPortBinging recogido en la etiqueta binding más arriba-->
+            <soap:address location="http://localhost:8080/HAXWSHelloAppServer/jaxwsHello" />  <!-- Donde tenemos disponible el servicio web que se esta´describiendo -->
+        </port>
+    </service>
+
+</definitions>º

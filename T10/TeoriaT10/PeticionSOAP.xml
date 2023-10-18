@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope"
+xmlns:ns1="http://localhost/DesWebServ/T10/TeoriaT10/CasoPractico1.php">
+<env:Header/>
+<env:Body>
+    <ns1:getPVP>
+        <referencia>AA</referencia>
+    </ns1:getPVP>
+</env:Body>
+
+
+</env:Envelope>

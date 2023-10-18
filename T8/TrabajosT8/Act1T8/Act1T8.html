@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 1 Tema 8 AJAX con HTML</title>
+    <script>
+
+        function inicia() {
+            var peticion;
+            if (window.XMLHttpRequest) {
+                console.log(window.XMLHttpRequest);
+                peticion = new XMLHttpRequest();
+            } else if (window.ActiveXObject) {
+                peticion = new ActiveXObject();
+            }
+
+
+            function respuesta() {
+                if (peticion.readyState == 4) {
+                    if (peticion.status == 200) {
+                        //alert(peticion.responseText);
+                        //peticion.responseText;
+                        //la siguiente línea de comando te lleva a esa página
+                        window.location.href="http://localhost/DesWebServ/T6/TrabajosT6/Act1T6/Act1T6.html";
+                    }
+                }
+            }
+            peticion.onreadystatechange = respuesta;
+            peticion.open("POST", "http://localhost/DesWebServ/T6/TrabajosT6/Act1T6/Act1T6.html", true);
+            peticion.send(null);
+        }
+    </script>
+</head>
+
+<body>
+<p>El siguiente boton desencadenará una respuesta del servidor sin necesidad de recargar la página gracias a AJAX</p>
+    <button onclick="inicia()">Pincha aquí</button>
+
+</body>
+
+</html>
